@@ -1,0 +1,42 @@
+I have chosen the password manager option for the project.
+
+
+
+Threat model:
+
+OWASP top 10:
+
+A01:2025 - Broken Access Control - hope that server-side code is safe enough that information doesn't get deleted. Use the authentication strategies listed below for outside communication.
+A02:2025 - Security Misconfiguration - really make sure that the server's defaults such as admin users and encryption are set up properly or changed in some way.
+A03:2025 - Software Supply Chain Failures - hope that the cloud, where encrypted data is stored, isn't compromised and have backups perhaps somewhere in case it does occur.
+A04:2025 - Cryptographic Failures - handled in the steps below
+A05:2025 - Injection - hoping that TLS makes this a bit less deadly
+A06:2025 - Insecure Design - this seems only effective in hindsight as of course I'm trying to make sure the design itself is secure.
+A07:2025 - Authentication Failures - Key derivation functions and two-factor authentication should mitigate this.
+A08:2025 - Software or Data Integrity Failures - I suppose I'll really have to validate potential plugins if I do use them. Also be scared of auto-updates in case it breaks the extension.
+A09:2025 - Security Logging & Alerting Failures - I suppose detecting failed logins to one account from several locations could help and will have to store logs for say 6 months if possible.
+A10:2025 - Mishandling of Exceptional Conditions - I suppose looking at error handling and testing a lot of questionable cases to spot edge cases.
+
+Client-side controls - hopefully, the authentication and encryption tactics help mitigate potential problems with this.
+
+
+
+
+
+Cryptographic design
+Will be basing the initial plan off Bitwarden
+
+For key derivation, would look into PBKDF2 and Argon2id. 600 000 iterations are recommended for PBKDF2.
+
+When I was researching Bitwarden, it seemed that encryption occured at nearly every step: transit with TLS, cloud storage encryption within Azure (Transparent Data Encryption), then additional layers by Bitwarden's server applications such as master password hashes. For data in transit, it uses an authentication hash derived from an email address and master password. The hash is generated in the originating device and then sent to the server.
+
+
+
+Sources:
+https://bitwarden.com/help/bitwarden-security-white-paper/#user-data-protection
+https://bitwarden.com/blog/bitwarden-security-fundamentals-and-multifactor-encryption/
+
+
+Authentication and session model
+
+Slightly touched on the authentication in the previous section with the authentication hash. Force TLS with HTTP Security headers (HTTP Strict Transport Security). This should also function as fixation prevention. Content Security Policy (unsure of the implementation as of writing). A session is ended upon closing the browser or in a set amount of time (maybe 600 seconds?).
