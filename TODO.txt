@@ -19,6 +19,8 @@ incremental progress.
 
 As I am not that familiar with web-based coding, I'll be trying to adapt what I've learned in the Advanced Python course with Flask at least for now for server-side code.
 
+I will likely also abandon incorporating elements from other password managers for a bit as I'm lost. Maybe the browser extension section could use some inspiration?
+
 I know that I will not finish in time for CP 2, but at least I will have started.
 
 So this will be in two parts:
@@ -26,7 +28,19 @@ So this will be in two parts:
 Part 1:
 Creating the server-side portion.
 
+Documentation: https://flask.palletsprojects.com/en/stable/
+
+Need to get SQL running. It also needs to be encrypted in some way.
+
+Need to handle accounts and then data relating to those accounts.
+
 Part 2:
 Somehow making a browser extension.
 
+Documentation/help: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions
+
 Needs to send requests with TLS to the server
+
+Needs to have fields to input account details that then get sent over to be verified.
+
+Needs to be able to show what passwords are stored on that account.
