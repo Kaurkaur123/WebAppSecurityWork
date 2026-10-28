@@ -1,0 +1,32 @@
+Web-Based Secure Password Manager
+Checkpoint 2, core requirements implemented (Week 9)
+
+Deliverables. A running web application in the repository, plus a short progress note.
+
+• Basic working web interface with the core flows.
+
+• Basic server-side file encryption and decryption.
+
+• Basic secure authentication implemented with password hashing, and secure
+session management.
+
+• Application served over TLS in the development setup.
+
+• Run instructions that work on a clean machine, and a commit history showing
+incremental progress.
+
+
+
+As I am not that familiar with web-based coding, I'll be trying to adapt what I've learned in the Advanced Python course with Flask at least for now for server-side code.
+
+I know that I will not finish in time for CP 2, but at least I will have started.
+
+So this will be in two parts:
+
+Part 1:
+Creating the server-side portion.
+
+Part 2:
+Somehow making a browser extension.
+
+Needs to send requests with TLS to the server
